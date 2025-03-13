@@ -2,19 +2,19 @@ using UnityEngine;
 
 public class PlayerShooter : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public GameObject projectilePrefab; // Arrasta o prefab aqui no Inspector
+    public Transform firePoint; // Ponto de origem do tiro
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)) // Dispara apenas quando a tecla for pressionada
         {
-            Debug.Log("Espaço pressionado!");
+            Shoot();
         }
+    }
 
+    void Shoot()
+    {
+        Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
     }
 }
